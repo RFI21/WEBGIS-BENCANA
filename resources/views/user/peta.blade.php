@@ -157,20 +157,31 @@
 <div class="row justify-content-end mb-3">
     <div class="col-md-auto">
         <div class="d-flex align-items-center gap-2">
+
             <label class="fw-bold mb-0">
                 <i class="bi bi-calendar3 me-1"></i>
                 Tahun
             </label>
 
-            <select name="tahun" class="form-select" style="width: 120px;"
+            <select name="tahun"
+                    class="form-select"
+                    style="width: 120px;"
                     onchange="this.form.submit()">
+
+                <option value="semua"
+                    {{ $tahun == 'semua' ? 'selected' : '' }}>
+                    Semua
+                </option>
+
                 @for($i = 2021; $i <= 2025; $i++)
                     <option value="{{ $i }}"
                         {{ $tahun == $i ? 'selected' : '' }}>
                         {{ $i }}
                     </option>
                 @endfor
+
             </select>
+
         </div>
     </div>
 </div>

@@ -184,9 +184,10 @@ $bencanas = $queryBencana
     //daftar peta
 public function peta(Request $request)
 {
-    $tahun = $request->tahun ?? 2025;
+    $tahun = $request->tahun ?? 'semua';
 
     $gambarPeta = [
+        'semua' => 'PETA-BENCANA.png',
         2021 => 'PETA-BENCANA-2021.png',
         2022 => 'PETA-BENCANA-2022.png',
         2023 => 'PETA-BENCANA-2023.png',
