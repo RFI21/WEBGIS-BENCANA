@@ -153,15 +153,38 @@
                         <h2 class="section-title">PETA KOTA PALOPO</h2>
                     </div>
 
+                    <form method="GET" action="{{ route('user.peta') }}" class="mb-4">
+<div class="row justify-content-end mb-3">
+    <div class="col-md-auto">
+        <div class="d-flex align-items-center gap-2">
+            <label class="fw-bold mb-0">
+                <i class="bi bi-calendar3 me-1"></i>
+                Tahun
+            </label>
+
+            <select name="tahun" class="form-select" style="width: 120px;"
+                    onchange="this.form.submit()">
+                @for($i = 2021; $i <= 2025; $i++)
+                    <option value="{{ $i }}"
+                        {{ $tahun == $i ? 'selected' : '' }}>
+                        {{ $i }}
+                    </option>
+                @endfor
+            </select>
+        </div>
+    </div>
+</div>
+</form>
+
                     <!-- Peta Wrapper -->
                     <div class="map-container shadow-inner">
-                    <img src="{{ asset('assets/img/kota-palopo.png') }}"
+                    <img src="{{ asset('assets/img/'.$peta) }}"
                         alt="Peta Administrasi Kota Palopo"
                         class="map-img">
                         
                         <!-- Floating Info Button -->
                         <div class="position-absolute bottom-0 end-0 m-4">
-                            <a href="{{ asset('assets/img/kota-palopo.png') }}"
+                            <a href="{{ asset('assets/img/PETA-BENCANA-2025.png') }}"
                             target="_blank"
                             class="btn btn-light btn-sm shadow-sm rounded-pill px-3">
                             <i class="bi bi-fullscreen me-1"></i> Ukuran Penuh

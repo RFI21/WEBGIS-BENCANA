@@ -195,6 +195,21 @@
         <div class="map-wrapper">
             <!-- Sidebar Legenda -->
             <div class="map-sidebar">
+                    <form method="GET" action="{{ route('user.lokasi') }}" class="mb-3">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-calendar3 me-2"></i> Filter Tahun
+                        </label>
+
+                        <select name="tahun" class="form-select" onchange="this.form.submit()">
+                            @for($i = 2021; $i <= 2025; $i++)
+                                <option value="{{ $i }}"
+                                    {{ request('tahun', 2025) == $i ? 'selected' : '' }}>
+                                    {{ $i }}
+                                </option>
+                            @endfor
+                        </select>
+                    </form>
+
                 <h5><i class="bi bi-info-circle-fill text-primary"></i> Legenda</h5>
                 
                 <div class="legend-card">
@@ -217,23 +232,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="legend-card">
-                    <p class="small text-muted mb-3 fw-bold text-uppercase">Wilayah Kecamatan</p>
-                    <div id="kecamatan-list" style="max-height: 200px; overflow-y: auto;">
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                            <span style="width:12px; height:12px; background:#ff0000; display:block; border-radius:3px;"></span>
-                            <span class="small">Wara</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                            <span style="width:12px; height:12px; background:#00ff00; display:block; border-radius:3px;"></span>
-                            <span class="small">Wara Selatan</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                            <span style="width:12px; height:12px; background:#0000ff; display:block; border-radius:3px;"></span>
-                            <span class="small">Wara Utara</span>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="mt-auto">
                     <div class="alert alert-primary py-2 px-3 mb-0" style="font-size: 0.8rem; border-radius: 12px;">

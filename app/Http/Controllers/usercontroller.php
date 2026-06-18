@@ -30,14 +30,14 @@ public function semuaBencana()
 
 
     //lokasi
-    public function lokasi()
+    public function lokasi(Request $request)
     {
 
-        $bencanas=bencana::all();
-        // dd($bencanas);
+    $tahun = $request->tahun ?? 2025;
 
+    $bencanas = bencana::whereYear('tanggal', $tahun)->get();
 
-        return view('user.lokasi', compact('bencanas'));
+    return view('user.lokasi', compact('bencanas', 'tahun'));
     }
     
     //peta
@@ -179,12 +179,25 @@ $bencanas = $queryBencana
     {
     return view('user.login');
     }
-    //daftar layanan
-    public function peta()
-    {
 
-        return view('user.peta');
-    }
+
+    //daftar peta
+public function peta(Request $request)
+{
+    $tahun = $request->tahun ?? 2025;
+
+    $gambarPeta = [
+        2021 => 'PETA-BENCANA-2021.png',
+        2022 => 'PETA-BENCANA-2022.png',
+        2023 => 'PETA-BENCANA-2023.png',
+        2024 => 'PETA-BENCANA-2024.png',
+        2025 => 'PETA-BENCANA-2025.png',
+    ];
+
+    $peta = $gambarPeta[$tahun] ?? 'PETA-BENCANA-2025.png';
+
+    return view('user.peta', compact('tahun', 'peta'));
+}
         //detail layanan
 public function detail($id)
 {
